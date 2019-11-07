@@ -1,0 +1,27 @@
+<script type="text/html" data-template-name="tfjs-coco-ssd">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="tfjs-coco-ssd">
+   <p>A TensorFlow.js node to run prediction using the Coco SSD model for object detection.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('tfjs-coco-ssd', {
+        category: 'machine learning',
+        defaults: {
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        paletteLabel: "tfjs coco ssd",
+        color: "#ff9100",
+        icon: "tf-logo.png",
+        label: function() {
+            return this.name || "tfjs coco ssd";
+        }
+    });
+</script>

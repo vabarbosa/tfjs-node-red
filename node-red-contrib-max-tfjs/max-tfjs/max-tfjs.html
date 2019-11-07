@@ -1,0 +1,55 @@
+<script type="text/html" data-template-name="max-human-pose-estimator">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="max-human-pose-estimator">
+   <p>A Tensorflow.js node to run prediction against the MAX Human Pose Estimator model.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('max-human-pose-estimator', {
+        category: 'machine learning',
+        defaults: {
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        color: "#08cdc7",
+        icon: "max-logo.svg",
+        label: function() {
+            return this.name || "max human pose estimator";
+        }
+    });
+</script>
+
+
+
+<script type="text/html" data-template-name="max-image-segmenter">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="max-image-segmenter">
+   <p>A Tensorflow.js node to run prediction against the MAX Image Segmenter model.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('max-image-segmenter', {
+        category: 'machine learning',
+        defaults: {
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        color: "#08cdc7",
+        icon: "max-logo.svg",
+        label: function() {
+            return this.name || "max image segmenter"
+        }
+    });
+</script>

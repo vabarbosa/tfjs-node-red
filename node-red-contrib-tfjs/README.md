@@ -1,0 +1,43 @@
+# node-red-contrib-tfjs
+
+Node-RED nodes for TensorFlow.js.
+
+## Install
+
+The nodes can be installed using the Node-RED editor or NPM CLI
+
+From the Node-RED editor,
+
+1. Click the Node-RED Menu icon 
+1. Click **Manage Palette**
+1. Select **Palette** tab
+1. Select **Install** tab
+
+From the command line,
+
+1. Go into the Node-RED user directory (`~/.node-red`)
+    ```
+    cd ~/.node-red
+    ```
+1. Install the nodes (using the full directory path)
+    ```
+    npm install <full path>/node-red-contrib-tfjs
+    ```
+
+## Usage
+
+1. Add the node to the flow
+1. Wire the input and output accordingly
+1. Configure the node properties
+
+## Nodes
+
+| Name | Description |
+|--|--|
+|  |  |
+|  |  |
+
+## Resources
+
+- [Node-RED](https://nodered.org/)
+- [TensorFlow.js](https://www.tensorflow.org/js/)

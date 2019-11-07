@@ -1,0 +1,42 @@
+{
+    "name": "node-red-contrib-max-tfjs",
+    "version": "0.0.1",
+    "description": "Node-RED nodes of MAX TensorFlow.js models",
+    "dependencies": {
+        "@tensorflow/tfjs-node": "*",
+        "@codait/max-image-segmenter": "*",
+        "@codait/max-human-pose-estimator": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vabarbosa/tfjs-nodered"
+    },
+    "license": "Apache-2.0",
+    "keywords": [
+        "image segmenter",
+        "object detection",
+        "model asset exchange",
+        "max",
+        "tensorflow.js",
+        "tensorflowjs",
+        "tensorflow",
+        "tf.js",
+        "tfjs",
+        "node-red",
+        "nodered",
+        "machine learning"
+    ],
+    "node-red": {
+        "nodes": {
+            "max-tfjs": "max-tfjs/max-tfjs.js"
+        }
+    },
+    "contributors": [
+        "Dave Conway-Jones <ceejay@vnet.ibm.com> (https://github.com/dceejay)",
+        "Paul Van Eck (https://github.com/pvaneck)",
+        "Ted Chang (https://github.com/tedhtchang)",
+        "Ton Ngo (https://github.com/tonanhngo)",
+        "va barbosa (https://github.com/vabarbosa/)",
+        "YiHong Wang (https://github.com/yhwang)"
+    ]
+}

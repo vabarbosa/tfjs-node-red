@@ -1,0 +1,327 @@
+[
+    {
+        "id": "e2f6a886.f2c648",
+        "type": "tab",
+        "label": "tfjs",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f612e20b.7a0168",
+        "type": "inject",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 84,
+        "wires": [
+            [
+                "de1536db.5506a8"
+            ]
+        ]
+    },
+    {
+        "id": "de1536db.5506a8",
+        "type": "file in",
+        "z": "e2f6a886.f2c648",
+        "name": "Pilots.jpg",
+        "filename": "/Users/va/Desktop/max.test/test-images/Pilots.jpg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 317.5,
+        "y": 84,
+        "wires": [
+            [
+                "902a98ef.92f67",
+                "f3dd777f.d1b568"
+            ]
+        ]
+    },
+    {
+        "id": "e070c9c1.f7635",
+        "type": "debug",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 914.5,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "902a98ef.92f67",
+        "type": "image",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "width": 160,
+        "x": 555,
+        "y": 162,
+        "wires": []
+    },
+    {
+        "id": "a8fe1087.6cabe8",
+        "type": "inject",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120.5,
+        "y": 391,
+        "wires": [
+            [
+                "922541ef.1b3c1"
+            ]
+        ]
+    },
+    {
+        "id": "922541ef.1b3c1",
+        "type": "file in",
+        "z": "e2f6a886.f2c648",
+        "name": "Violin.jpg",
+        "filename": "/Users/va/Desktop/max.test/test-images/Violin.jpg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 308,
+        "y": 391,
+        "wires": [
+            [
+                "902a98ef.92f67",
+                "984bcd9a.04ef6"
+            ]
+        ]
+    },
+    {
+        "id": "984bcd9a.04ef6",
+        "type": "max-image-segmenter",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "x": 543.5,
+        "y": 391,
+        "wires": [
+            [
+                "e070c9c1.f7635"
+            ]
+        ]
+    },
+    {
+        "id": "f3dd777f.d1b568",
+        "type": "max-human-pose-estimator",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "x": 559.5,
+        "y": 85,
+        "wires": [
+            [
+                "e070c9c1.f7635"
+            ]
+        ]
+    },
+    {
+        "id": "6fc26546.af7d74",
+        "type": "debug",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 921.5,
+        "y": 634,
+        "wires": []
+    },
+    {
+        "id": "2ed4b6e1.63c73a",
+        "type": "image",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "width": 160,
+        "x": 497,
+        "y": 607,
+        "wires": []
+    },
+    {
+        "id": "638757ed.a55608",
+        "type": "function",
+        "z": "e2f6a886.f2c648",
+        "name": "nsfw class probability",
+        "func": "const nsfwClasses = [ 'Drawing', 'Hentai', 'Neutral', 'Porn', 'Sexy' ]\nconst logits = msg.payload.values\nconst prediction = {}\n\nfor (let i = 0; i < msg.payload.size; i++) {\n    prediction[nsfwClasses[i]] =\n        +parseFloat(logits[i]).toFixed(5)\n}\n\nmsg.payload = prediction\n\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 903.5,
+        "y": 541,
+        "wires": [
+            [
+                "6fc26546.af7d74"
+            ]
+        ]
+    },
+    {
+        "id": "8678850b.d442b8",
+        "type": "comment",
+        "z": "e2f6a886.f2c648",
+        "name": "NSFW - https://s3.amazonaws.com/ir_public/nsfwjscdn/TFJS_nsfw_mobilenet/tfjs_quant_nsfw_mobilenet/model.json",
+        "info": "",
+        "x": 775.5,
+        "y": 497,
+        "wires": []
+    },
+    {
+        "id": "1ca8c6be.b70e19",
+        "type": "debug",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 684.5,
+        "y": 848,
+        "wires": []
+    },
+    {
+        "id": "c6cd910.755c0f",
+        "type": "inject",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 121.5,
+        "y": 848,
+        "wires": [
+            [
+                "90f5d090.73c228"
+            ]
+        ]
+    },
+    {
+        "id": "90f5d090.73c228",
+        "type": "file in",
+        "z": "e2f6a886.f2c648",
+        "name": "Violin.jpg",
+        "filename": "/Users/va/Desktop/max.test/test-images/Violin.jpg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 280,
+        "y": 848,
+        "wires": [
+            [
+                "2ed4b6e1.63c73a",
+                "f1b58a1c.5a9fa"
+            ]
+        ]
+    },
+    {
+        "id": "1d6a9dd6.43b59a",
+        "type": "inject",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 121,
+        "y": 541,
+        "wires": [
+            [
+                "53b220d2.cc15d8"
+            ]
+        ]
+    },
+    {
+        "id": "53b220d2.cc15d8",
+        "type": "file in",
+        "z": "e2f6a886.f2c648",
+        "name": "Pilots.jpg",
+        "filename": "/Users/va/Desktop/max.test/test-images/Pilots.jpg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 279.5,
+        "y": 541,
+        "wires": [
+            [
+                "2ed4b6e1.63c73a",
+                "99a77fc9.3252c8"
+            ]
+        ]
+    },
+    {
+        "id": "f1b58a1c.5a9fa",
+        "type": "tfjs-coco-ssd",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "x": 462.5,
+        "y": 848,
+        "wires": [
+            [
+                "1ca8c6be.b70e19"
+            ]
+        ]
+    },
+    {
+        "id": "99a77fc9.3252c8",
+        "type": "tfjs-image-to-tensor",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "precision": "float32",
+        "dimensions": "4d",
+        "maxLength": "224",
+        "makeSquare": true,
+        "includeValues": false,
+        "x": 482.5,
+        "y": 541,
+        "wires": [
+            [
+                "b709af08.5360b8"
+            ]
+        ]
+    },
+    {
+        "id": "b709af08.5360b8",
+        "type": "tfjs-model-predict",
+        "z": "e2f6a886.f2c648",
+        "name": "",
+        "model": "https://s3.amazonaws.com/ir_public/nsfwjscdn/TFJS_nsfw_mobilenet/tfjs_quant_nsfw_mobilenet/model.json",
+        "modelType": "layers",
+        "x": 690.5,
+        "y": 541,
+        "wires": [
+            [
+                "638757ed.a55608"
+            ]
+        ]
+    }
+]

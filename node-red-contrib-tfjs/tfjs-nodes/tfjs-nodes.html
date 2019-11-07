@@ -1,0 +1,97 @@
+<script type="text/html" data-template-name="tfjs-model-predict">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-model"><i class="fa fa-globe"></i> Model URL</label>
+        <input type="text" id="node-input-model" placeholder="e.g. file:///mymodel.json">
+    </div>
+    <div class="form-row">
+        <label for="node-input-modelType"><i class="fa fa-file-text-o"></i> Model type</label>
+        <select id="node-input-modelType">
+            <option value="graph">Graph model</option>
+            <option value="layers" selected>Layers model</option>
+        </select>
+    </div>
+    <br/>
+</script>
+
+<script type="text/html" data-help-name="tfjs-model-predict">
+   <p>A TensorFlow.js node to run prediction against the configured model.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('tfjs-model-predict', {
+        category: 'machine learning',
+        defaults: {
+            name: { value: "" },
+            model: { value: "" },
+            modelType: { value: "layers" }
+        },
+        inputs: 1,
+        outputs: 1,
+        color: "#ff9100",
+        icon: "tf-logo.png",
+        label: function() {
+            return this.name || "tfjs predict";
+        }
+    });
+</script>
+
+
+<script type="text/html" data-template-name="tfjs-image-to-tensor">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="resize-inputs"><i class="fa fa-arrows-alt"></i> Resize</label>
+        <span id="resize-inputs">
+            <label for="node-input-maxLength" style="width: initial;"> Max Length</label>
+            <input type="number" id="node-input-maxLength" min=0 step=1 style="width: 100px;" placeholder="length in px">
+            <input type="checkbox" id="node-input-makeSquare" style="margin-left: 25px;width: initial;">
+            <label for="node-input-makeSquare" style="width: initial;"> make square</label>
+        </span>
+    </div>
+    <div class="form-row">
+        <label for="node-input-precision"><i class="fa fa-calculator"></i> Precision</label>
+        <select id="node-input-precision">
+            <option value="float32" selected>float32</option>
+            <option value="int32">int32</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-dimensions"><i class="fa fa-hashtag"></i> Dimensions</label>
+        <select id="node-input-dimensions">
+            <option value="3d">3 (width, height, rgb)</option>
+            <option value="4d" selected>4 (batch, width, height, rgb)</option>
+        </select>
+    </div>
+    <br/>
+</script>
+
+<script type="text/html" data-help-name="tfjs-image-to-tensor">
+   <p>Convert an image to a TensorFlow.js Tensor</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('tfjs-image-to-tensor', {
+        category: 'machine learning',
+        defaults: {
+            name: { value: "" },
+            precision: { value: "float32" },
+            dimensions: { value: "4d" },
+            maxLength: { value: ""},
+            makeSquare: { value: false},
+            includeValues: { value: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        color: "#ff9100",
+        icon: "tf-logo.png",
+        label: function() {
+            return this.name || "tfjs image to tensor";
+        }
+    });
+</script>
