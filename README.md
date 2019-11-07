@@ -1,6 +1,6 @@
 # Node-RED Nodes for Machine Learning with TensorFlow.js
 
-[![Generic badge](https://img.shields.io/badge/status-WORK%20IN%20PROGRESS-red.svg)](https://shields.io/)
+![work in progress](https://img.shields.io/badge/-WORK%20IN%20PROGRESS-red?style=for-the-badge)
 
 This repository is a collection of Node-RED nodes and flows that use TensorFlow.js to enable Machine Learning in Node-RED.
 
